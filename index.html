@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="cifrao.png" type="image/icon">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Financeiro</title>
 </head>
 
-<body>
+<body class="container">
     <header>
         <img src="finança.png" alt="finaça">
     </header>
     <main>
-        
-        <div class="blocks">
-            <p>Proventos</p>
-            <p>R$ 0,00</p>
+        <div class="principal">
+            <div class="blocks">
+                <p>Proventos</p>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="blocks">
+                <p>Gastos</p>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="blocks">
+                <p>Saldo</p>
+                <p>R$ 0,00</p>
+            </div>
         </div>
-        <div class="blocks">
-            <p>Gastos</p>
-            <p>R$ 0,00</p>
-        </div>
-        <div class="blocks">
-            <p>Saldo</p>
-            <p>R$ 0,00</p>
-        </div>
-
         <form action="" id="formulario">
             <div class="group-input">
                 <label for="descrição">Descrição</label>
@@ -39,13 +41,13 @@
                 <input type="text" name="valor" id="text" placeholder="Digite o valor">
             </div>
 
-            <div class="group-input">
+            <div class="group-input-radio">
+                <input type="radio" name="gender" id="radio">
                 <label for="entrada">Entrada</label>
                 <input type="radio" name="gender" id="radio">
                 <label for="saida">Saída</label>
-                <input type="radio" name="gender" id="radio">
             </div>
-            <input type="submit" value="Salvar">
+            <input type="submit" value="Salvar" id="button">
         </form>
 
 
@@ -76,10 +78,13 @@
         </table>
     </main>
     <footer>
-        <p>Guilherme Dev, @ Copyright - Todos os Direitos Reservados</p>
-        <i class="ri-instagram-line"></i>
-        <i class="ri-facebook-box-fill">&#xECB8;</i>
-        <i class="fa-brands fa-facebook"></i>
+        <p class="paragrafo">Guilherme Dev, @ Copyright - Todos os Direitos Reservados</p>
+        <div class="icon">
+            <a href="https://instagram.com/guilhermesantoszx?igshid=OGQ5ZDc2ODk2ZA=="><img src="icons/instagram.png"alt="instagram" class="icones"></a>
+            <a href="https://github.com/Guilherme027"><img src="icons/github.png" alt="github" class="icones"></a>
+            <a href="https://www.linkedin.com/in/guilherme-dos-santos-souza-99a714264/"><img src="icons/linkedin.png"
+                    alt="linkedin" class="icones"></a>
+        </div>
     </footer>
 </body>
 

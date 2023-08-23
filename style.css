@@ -10,8 +10,120 @@ html {
   font-family: Tilt Neon;
 }
 
-header {
-        background-color: #57AEFF;
-        display: flex;
-        justify-content: center;
-    }
+.container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container header {
+  background-color: #57AEFF;
+  display: flex;
+  justify-content: center;
+}
+
+img{
+  width: 28em;
+}
+.container main {
+  width: min(90vw, 950px);
+  margin: auto;
+  flex: 1 1 0;
+}
+
+
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.blocks {
+  border-radius: 10px;
+  padding: 5px;
+  width: 300px;
+  height: 3.5em;
+  background: #D9D9D9;
+  text-align: center;
+  margin: 20px;
+  font-size: 40px;
+  margin-top: -20px;
+  box-shadow: 0px 10px 40px #00000056;
+
+}
+
+#formulario {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: center;
+  background-color: #D9D9D9;
+  align-items: center;
+
+}
+
+.group-input {
+  margin: 10px;
+}
+
+#text {
+  border-radius: 5px;
+  height: 30px;
+  text-align: left;
+  width: 190px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.32);
+  color: black;
+  font-size: 12pt;
+
+}
+
+#button {
+  width: 10em;
+  height: 2em;
+  border-radius: 2em;
+  background-color: rgba(85, 231, 34, 1);
+  margin: 2em;
+}
+
+#radio {
+  margin: 1.5em;
+  width: 1em;
+}
+
+.group-input-radio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+.tabela {
+  width: 100%;
+  padding-top: 20px;
+}
+
+table,tr,td {
+  border: 1px solid black;
+}
+
+.container footer{
+  background-color: #57AEFF;
+  height: 4rem;
+vertical-align: middle;
+}
+
+.icon{
+ display: flex;
+ justify-content:right;
+ gap: 0.75rem;
+}
+.icones{
+  width: 2rem;
+}
+.paragrafo{
+  font-size: 20px;
+  text-align: center;
+}

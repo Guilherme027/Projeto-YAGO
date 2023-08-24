@@ -13,74 +13,124 @@
 
 <body class="container">
     <header>
-        <img src="finança.png" alt="finaça">
+        <img src="finança.png" alt="finança" id="img">
     </header>
     <main>
         <div class="principal">
             <div class="blocks">
-                <p>Proventos</p>
+                <h3 class="text">
+                    Proventos
+                    <img src="icons/proventos.png" alt="" class="group-icons">
+                </h3>
                 <p>R$ 0,00</p>
             </div>
             <div class="blocks">
-                <p>Gastos</p>
+                <h3 class="text">Gastos
+                    <img src="icons/gastos.png" alt="" class="group-icons">
+                </h3>
                 <p>R$ 0,00</p>
             </div>
             <div class="blocks">
-                <p>Saldo</p>
+                <h3 class="text">Saldo
+                    <img src="icons/saldos.png" alt="" class="group-icons">
+                    <img src="icons/alerta.png" alt="" class="group-icons" id="alerta">
+                </h3>
                 <p>R$ 0,00</p>
             </div>
         </div>
-        <form action="" id="formulario">
-            <div class="group-input">
-                <label for="descrição">Descrição</label>
-                <input type="text" name="descrição" id="text" placeholder="Digite a descrição">
-            </div>
+        <div class="content-form">
+            <form action="" class="formulario">
+                <div class="single-input">
+                    <input type="text" class="input" id="descrição" required>
+                    <label for="descrição">Descrição</label>
+                </div>
+                <div class="single-input">
+                    <input type="text" class="input" id="valor" required>
+                    <label for="valor">Valor</label>
+                </div>
 
-            <div class="group-input">
-                <label for="valor">Valor</label>
-                <input type="text" name="valor" id="text" placeholder="Digite o valor">
-            </div>
-
-            <div class="group-input-radio">
-                <input type="radio" name="gender" id="radio">
-                <label for="entrada">Entrada</label>
-                <input type="radio" name="gender" id="radio">
-                <label for="saida">Saída</label>
-            </div>
-            <input type="submit" value="Salvar" id="button">
-        </form>
-
+                <div class="group-input-radio">
+                    <input type="radio" name="gender" id="radio">
+                    <label for="entrada">Entrada</label>
+                    <input type="radio" name="gender" id="radio">
+                    <label for="saida">Saída</label>
+                </div>
+            
+                    <button type="submit" class="button">Salvar <img src="icons/adição.png" alt="" id="salvar"></button>
+               
+            </form>
+        </div>
 
         <table class="tabela">
             <tr>
                 <th>Descrição</th>
                 <th>Valor</th>
                 <th>Tipo</th>
+                <th></th>
             </tr>
 
             <tr>
                 <td>Nubank- Cartão de crédito</td>
                 <td>R$ 200,00</td>
                 <td>Saída</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
             </tr>
 
             <tr>
                 <td>Investimento</td>
                 <td>R$ 400,00</td>
                 <td>Saída</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
             </tr>
 
             <tr>
                 <td>Salário</td>
                 <td>R$ 1000,00</td>
                 <td>Entrada</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
+            </tr>
+
+            <tr>
+                <td>*</td>
+                <td>*</td>
+                <td>*</td>
+                <td><ion-icon name="create" class="group-table-icons"></ion-icon>
+                    <ion-icon name="trash" class="group-table-icons"></ion-icon></td>
             </tr>
         </table>
     </main>
     <footer>
-        <p class="paragrafo">Guilherme Dev, @ Copyright - Todos os Direitos Reservados</p>
+        <div class="paragrafo">Guilherme Dev,  © Copyright - Todos os Direitos Reservados </div>
         <div class="icon">
-            <a href="https://instagram.com/guilhermesantoszx?igshid=OGQ5ZDc2ODk2ZA=="><img src="icons/instagram.png"alt="instagram" class="icones"></a>
+            <a href="https://instagram.com/guilhermesantoszx?igshid=OGQ5ZDc2ODk2ZA=="><img src="icons/instagram.png"
+                    alt="instagram" class="icones"></a>
             <a href="https://github.com/Guilherme027"><img src="icons/github.png" alt="github" class="icones"></a>
             <a href="https://www.linkedin.com/in/guilherme-dos-santos-souza-99a714264/"><img src="icons/linkedin.png"
                     alt="linkedin" class="icones"></a>

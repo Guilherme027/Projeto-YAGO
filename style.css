@@ -34,20 +34,18 @@ html {
   width: 50%;
   margin: auto;
   flex: 1 1 0;
-
 }
 
 .principal {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .blocks {
-  border-radius: 10px;
-  padding: 5px;
-  width: 300px;
+  border-radius: 0.625rem;
+  padding: 0.313rem;
+  width: 18.75rem;
   height: 3.5em;
   background: white;
   text-align: center;
@@ -59,19 +57,20 @@ html {
 
 .text {
   text-align: center;
-  font-size: 35px;
+  font-size: 2.125rem;
   display: flex;
   justify-content: space-between;
 }
 
 .group-icons {
-  width: 2.8rem;
+  width: 2.5rem;
   text-align: right;
 }
 
-#alerta{
+#alerta {
   display: none;
 }
+
 .content-form {
   padding: 40px;
 }
@@ -130,12 +129,18 @@ html {
   color: #57AEFF;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 .button {
   width: 10em;
   height: 2em;
   border-radius: 2em;
-  background-color: rgb(121, 236, 79);
+  background-color: #57AEFF;
   margin: 2em;
   font-weight: bold;
   font-size: 16px;
@@ -147,10 +152,15 @@ html {
   gap: .7rem;
 }
 
-#salvar{
+.button:hover {
+  background-color: rgb(121, 236, 79);
+  cursor: pointer;
+}
+
+#salvar {
   width: 1rem;
   height: 1rem;
-  
+
 }
 
 #radio {
@@ -166,6 +176,7 @@ html {
   font-size: 16px;
 }
 
+
 .tabela {
   width: 95%;
   border-collapse: collapse;
@@ -173,12 +184,13 @@ html {
   background-color: white;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  
 }
 
 th,
 td {
   padding: 12px 15px;
-  text-align: left;
+  text-align: center;
 }
 
 th {
@@ -191,20 +203,20 @@ tr:nth-child(even) {
   ;
 }
 
-.group-icons-create:hover{
- color: #57AEFF;
+.group-icons-create:hover {
+  color: #57AEFF;
 }
 
-.group-icons-trash:hover{
+.group-icons-trash:hover {
   color: red;
 }
 
-.group-icons-create{
+.group-icons-create {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.group-icons-trash{
+.group-icons-trash {
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -225,6 +237,7 @@ tr:nth-child(even) {
   align-items: center;
   justify-content: center;
   gap: .9rem;
+  padding: .5rem;
 
 }
 

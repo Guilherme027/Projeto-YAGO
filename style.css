@@ -191,12 +191,22 @@ tr:nth-child(even) {
   ;
 }
 
-t:hover{
-  background-color: #57AEFF;
+.group-icons-create:hover{
+ color: #57AEFF;
 }
 
-.group-table-icons{
+.group-icons-trash:hover{
+  color: red;
+}
+
+.group-icons-create{
   width: 1.5rem;
+  height: 1.5rem;
+}
+
+.group-icons-trash{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 
@@ -231,4 +241,5 @@ t:hover{
   margin: 0 auto;
   justify-content: center;
   display: grid;
+  color: white;
 }

@@ -22,26 +22,26 @@
                     Proventos
                     <img src="icons/proventos.png" alt="" class="group-icons">
                 </h3>
-                <p>R$ 0,00</p>
+                <p id="card-entrada">R$ 0,00</p>
             </div>
             <div class="blocks">
                 <h3 class="text">Gastos
                     <img src="icons/gastos.png" alt="" class="group-icons">
                 </h3>
-                <p>R$ 0,00</p>
+                <p id="card-saida">R$ 0,00</p>
             </div>
             <div class="blocks">
                 <h3 class="text">Saldo
                     <img src="icons/saldos.png" alt="" class="group-icons">
                     <img src="icons/alerta.png" alt="" class="group-icons" id="alerta">
                 </h3>
-                <p>R$ 0,00</p>
+                <p id="card-saldo">R$ 0,00</p>
             </div>
         </div>
         <div class="content-form">
             <form action="" class="formulario">
                 <div class="single-input">
-                    <input type="text" class="input" id="descrição" required>
+                    <input type="text" class="input" id="descricao" required>
                     <label for="descrição">Descrição</label>
                 </div>
                 <div class="single-input">
@@ -50,13 +50,14 @@
                 </div>
 
                 <div class="group-input-radio">
-                    <input type="radio" name="gender" id="radio">
+                    <input type="radio" name="modalidade" id="radio">
                     <label for="entrada">Entrada</label>
-                    <input type="radio" name="gender" id="radio">
+                    <input type="radio" name="modalidade" id="radio">
                     <label for="saida">Saída</label>
                 </div>
-
-                <button type="submit" class="button">Salvar <ion-icon name="add-circle-outline" id="salvar"></ion-icon></button>
+                <input type="hidden" name="id" id="formid">
+                <button type="submit" class="button">Salvar <ion-icon name="add-circle-outline"
+                        id="salvar"></ion-icon></button>
 
             </form>
         </div>
@@ -91,24 +92,6 @@
                 <td>Salário</td>
                 <td>R$ 1000,00</td>
                 <td>Entrada</td>
-                <td><ion-icon name="create" class="group-icons-create"></ion-icon>
-                    <ion-icon name="trash" class="group-icons-trash"></ion-icon>
-                </td>
-            </tr>
-
-            <tr>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
-                <td><ion-icon name="create" class="group-icons-create"></ion-icon>
-                    <ion-icon name="trash" class="group-icons-trash"></ion-icon>
-                </td>
-            </tr>
-
-            <tr>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
                 <td><ion-icon name="create" class="group-icons-create"></ion-icon>
                     <ion-icon name="trash" class="group-icons-trash"></ion-icon>
                 </td>

@@ -81,7 +81,7 @@ class Database {
 
 // Código para colocar o forms para ser interativo 
 
-lass Form {
+class Form {
     constructor() {
         this.id = "";
         this.descricao = "";
@@ -89,7 +89,7 @@ lass Form {
         this.modalidade = "";
     }
 
-    __valid() {
+    _valid() {
         if (this.descricao == '') return false;
         if (this.valor == 0) return false;
         if (this.modalidade == '') return false;
@@ -98,5 +98,72 @@ lass Form {
 }
 
 document.addEventListener('limparFormulario', () => {
-    
-} )
+    document.querySelector('#formid').value = '';
+    document.querySelector('#descricao').value = '';
+    document.querySelector('#valor').value = '';
+    documet.querySelector('#entrada').checked = false;
+    documet.querySelector('#saida').checked = false;
+
+} );
+
+document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let idTag = document.querySelector('#formid')
+    let valorTag = document.querySelector('#valor');
+    let form = new Form;
+
+    form.id = document.querySelector('#formid').value;
+    form.descricao = document.querySelector('#descricao').value;
+    form.valor  = parseFloat(document.querySelector('#valor').value);
+    form.modalidade = document.querySelector('input[name = ."modalidade"]:checked').value;
+
+    if (form.valor == 0) {
+        valorTag.computedStyleMap.borderColor = "red";
+        valorTag.style.color = "red";
+        valorTag.parentElement.querySelector('label').style.color = "red";
+        setTImeout(() =>{
+            valorTag.style.borderColor = "#57AEFF";
+            valorTag.style.color = "#57AEFF";
+            valorTag.parentElement.querySelector('label').style.color = "#57AEFF";
+            return false;
+        }, 1000);
+    } else if (form._valid()) {
+        let db = new Database();
+
+        let model = new Model;
+        model.id = form.id;
+        model.descricao = form.descricao;
+        model.valor = form.valor;
+        model.modalidade = form.modalidade;
+
+        db.save(model);
+
+        document.dispatchEvent(new CustomEvent('preencherTabela'));
+        document.dispatchEvent(new CustomEvent9('atualizarCards'));
+        document.dispatchEvent(new CustomEvent('limparFormulario'));
+    }
+});
+
+document.addEventListener('formPopular', (event) => {
+    const form = event.detail;
+
+    if (form.id === document.querySelector('#formid').value) {
+        document.dispatchEvent(new CustomEvent('limparFormulario'));
+        return;
+    }
+
+    document.dispatchEvent(new CustomEvent('limparFormulario'));
+
+    document.querySelector('#formid').value = form.id;
+    document.querySelector('#descricao').value = form.descricao;
+    document.querySelector('#valor').value = form.valor;
+
+    if(form.modalidade === 'E') {
+        document.querySelector('#entrada').checked = true;
+    }
+
+    if(form.modalidade === 'S'){
+        document.querySelector('#saida').checked = true;
+    }
+});

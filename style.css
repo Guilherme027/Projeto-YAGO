@@ -162,7 +162,7 @@ input[type=number]::-webkit-outer-spin-button {
   height: 1.5rem;
 }
 
-#radio {
+.radio {
   margin: 1em;
   width: 1em;
 }

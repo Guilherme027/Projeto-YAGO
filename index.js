@@ -22,9 +22,9 @@ document.addEventListener('atualizarCards', () => {
 
         saldo = proventos - gastos;
     });
-    document.querySelector('#card-entrada').innerHTML = toMoney(proventos);
-    document.querySelector('#card-saida').innerHTML = toMoney(gastos * -1);
-    document.querySelector('card-saldo').innerHTML = toMoney(saldo);
+    document.querySelector('#card-entrada').innerHTML = Money(proventos);
+    document.querySelector('#card-saida').innerHTML = Money(gastos * -1);
+    document.querySelector('#card-saldo').innerHTML = Money(saldo);
 });
 
 // Retornos para bd
@@ -70,7 +70,7 @@ class Database {
             this.list = newList; 
         }
 
-        localStorage.setItem('list', JSON,stringify(this.list));
+        localStorage.setItem('list', JSON.stringify(this.list));
     }
 
     delete(id) {
@@ -140,7 +140,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
         db.save(model);
 
         document.dispatchEvent(new CustomEvent('preencherTabela'));
-        document.dispatchEvent(new CustomEvent9('atualizarCards'));
+        document.dispatchEvent(new CustomEvent('atualizarCards'));
         document.dispatchEvent(new CustomEvent('limparFormulario'));
     }
 });
@@ -166,4 +166,80 @@ document.addEventListener('formPopular', (event) => {
     if(form.modalidade === 'S'){
         document.querySelector('#saida').checked = true;
     }
+});
+
+// Código para colocar a data
+
+function zerofill(number, digits) {
+    return number.toString()
+        ,length < digits
+            ? zerofill('0' + number, digits)
+            : number;
+}
+
+function getDatePTBR() {
+    const now = new Date();
+
+    const dia = zerofill(now.getDate(), 2);
+    const mes = zerofill(now.getMonth(), 2);
+    const ano = now.getFullYear();
+
+    return `${dia}/${mes}/${ano}`;
+}
+
+// Transformar os valores para a moeda brasileira (R$)
+
+function Money(value) {
+    let moneyFormat = Intl.NumberFormat('pt-BR', 
+        {style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 3}
+        );
+    return moneyFormat.format(value);
+}
+
+// Desenvolvendo a interação da tabela com o forms
+
+document.addEventListener('preencherTabela', (event) => {
+    let db = new Database()
+    let tableList = document.querySelector('#listaTabela');
+
+    tableList.innerHTML = '';
+
+    db.getList().forEach(element => {
+        let modalidade = element.modalidade == 'E' ? 'entrada' : 'saida';
+        let valor = element.modalide == 'E' ? element.valor : element.valor * -1;
+
+        let tr = document.createElement("tr");
+
+    tr.innerHTML = (`
+    <tr>
+    <td>${element.descricao}</td>
+    <td>${Money(valor)}</td>
+    <td>${modalidade}</td>
+    <td>${element.lancamento}</td>
+    <td><ion-icon name="create" class="group-icons-create">${element.id}</ion-icon>
+        <ion-icon name="trash" class="group-icons-trash">${element.id}</ion-icon>
+    </td>`);
+
+    tableList.innerHTML = tableList.innerHTML + tr;
+
+    document.querySelectorAll('.group-icons-create').forEach(el =>{
+        el.addEventListener('click', () => {
+            let ok = confirm('Deseja realmente excluir esse dado?');
+
+            if(ok) {
+                db.delete(el.dataset.id);
+                document.dispatchEvent(new CustomEvent('preencherTabela'));
+                document.dispatchEvent(new CustomEvent('atualizarCards'))
+            }
+        });
+    });
+
+    document.querySelectorAll('.group-icons-create').forEach(el => {
+        el.addEventListener('click', () =>{
+            document.dispatchEvent(new CustomEvent('preencherTabela', {
+                detail: db.get(el.dataset.id)
+            }))
+        });
+    });
+});
 });

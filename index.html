@@ -56,31 +56,69 @@
                     <label for="saida">Saída</label>
                 </div>
                 <input type="hidden" name="id" id="formid">
-                <button type="submit" class="button">Salvar <ion-icon name="add-circle-outline"
+                <button type="submit" id="button">Salvar <ion-icon name="add-circle-outline"
                         id="salvar"></ion-icon></button>
 
             </form>
         </div>
+        <div class="table">
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Tipo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nubank- Cartão de crédito</td>
+                        <td>R$ 200,00</td>
+                        <td>Saída</td>
+                        <td><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <ion-icon name="trash" class="group-icons-trash"></ion-icon>
+                        </td>
+                    </tr>
 
-        <table class="tabela">
-            <tr>
-                <th>Descrição</th>
-                <th>Valor</th>
-                <th>Tipo</th>
-                <th></th>
-            </tr>
+                    <tr>
+                        <td>Investimento</td>
+                        <td>R$ 400,00</td>
+                        <td>Saída</td>
+                        <td><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <ion-icon name="trash" class="group-icons-trash"></ion-icon>
+                        </td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><ion-icon name="create" class="group-icons-create"></ion-icon>
-                    <ion-icon name="trash" class="group-icons-trash"></ion-icon>
-                </td>
-            </tr>
-            <div class="tableBody" id="listaTabela"></div>
-        </table>
+                    <tr>
+                        <td>Salário</td>
+                        <td>R$ 1000,00</td>
+                        <td>Entrada</td>
+                        <td><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <ion-icon name="trash" class="group-icons-trash"></ion-icon>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>*</td>
+                        <td>*</td>
+                        <td>*</td>
+                        <td><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <ion-icon name="trash" class="group-icons-trash"></ion-icon>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>*</td>
+                        <td>*</td>
+                        <td>*</td>
+                        <td><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <ion-icon name="trash" class="group-icons-trash"></ion-icon>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
     <footer>
         <div class="paragrafo">Guilherme Dev, © Copyright - Todos os Direitos Reservados </div>
@@ -93,5 +131,6 @@
         </div>
     </footer>
 </body>
+<script src="index.js"></script>
 
 </html>

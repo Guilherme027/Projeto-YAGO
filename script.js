@@ -173,7 +173,7 @@ saldo.innerHTML = formatmoney(Number(totalItems));
 
 };
 
-
+// salvando Localstorage
 
 const getItensBD = () => JSON.parse(localStorage.getItem("bd_items")) ?? [];
 const setItensBD = () => localStorage.setItem("bd_items", JSON.stringify(items));

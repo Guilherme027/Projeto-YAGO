@@ -1,16 +1,20 @@
-const main = document.querySelector("main");
 
+
+//definindo as const do cards
 
 const entrada = document.querySelector("#card-entrada");
 const saida = document.querySelector("#card-saida");
 const saldo = document.querySelector("#card-saldo");
 
+
+// definindo as conts do botão e da tabela
 const btn = document.querySelector("#button");
 const tbody = document.querySelector("tbody");
 
 let items = [];
 let id
 
+// clique do botão onde será salvo os dados
 btn.onclick = () => {
     const descricao = document.querySelector("#descricao");
     const valor = document.querySelector("#valor");
@@ -21,9 +25,9 @@ btn.onclick = () => {
     }
 
     if(id !== undefined) {
-        items[id].descricao = descricao.value
-        items[id].valor = valor.value
-        items[id].tipo = tipo.value
+        items[id].descricao = descricao.value;
+        items[id].valor = valor.value;
+        items[id].tipo = tipo.value;
     } else {
         items.unshift({'descricao': descricao.value, 'valor': valor.value, 'tipo': tipo.value})
     }
@@ -38,10 +42,7 @@ valor.value = "";
 
 
 
-
-// END EVENT BUTTON
-
-// EVENT DELETE
+// Função para deletar os itens
 
 function deleteItem(index) {
 
@@ -54,29 +55,25 @@ if (userConfirmation) {
     items.splice(index, 1);
     setItensBD();
     loadItens();
-    // Código para deletar o item vai aqui
     console.log(`Item ${index} apagado.`);
 
-}
-// Se o usuário cancelou a exclusão
-else {
-    // Não faça nada
+}else {
 
     console.log('Operação de exclusão cancelada.');
 
 }
-}
+};
 
-// END EVENT OF DELETE
+// Função para editar os forms
 
-// EVENT EDIT
 function editarItem(index) {
 
 openModal(true, index)
 };
 
+
 function openModal(edit = false, index = 0) {
-const grupodesc = document.querySelectorAll('single-input')
+const contentdesc = document.querySelectorAll('single-input')
 const descricao = document.querySelector("#descricao");
 const valor = document.querySelector("#valor");
 const tipo = document.querySelector('input[name="modalidade"]:checked');
@@ -105,11 +102,8 @@ if (edit) {
 
 
 
-// END EVENT OF EDIT
 
-
-// EVENT INSERT
-
+//Função para inserir os dados do forms
 function insertItem(item, index) {
 
 const descricao = document.querySelector("#descricao");
@@ -126,14 +120,14 @@ tr.innerHTML = (`
             ? '<ion-icon id="icon-up" name="caret-up"></ion-icon>'
             : '<ion-icon id="icon-down" name="caret-down"></ion-icon>'}
             </td>
-<td class="btn-actions">
-    <button id="btn-editar" onclick="editarItem(${index})"><ion-icon name="create-outline"></ion-icon>
-    <button id="btn-delete" onclick="deleteItem(${index})"><ion-icon name="trash-outline"></ion-icon></button>
+<td>
+<button  onclick="editarItem(${index})"><ion-icon name="create-outline"></ion-icon>
+    <button  onclick="deleteItem(${index})"><ion-icon name="trash-outline"></ion-icon></button>
 </td>`);
 
 tbody.appendChild(tr)
 
-}
+};
 
 function loadItens() {
 items = getItensBD();
@@ -145,10 +139,10 @@ items.forEach((item, index) => {
 getTotal();
 
 };
-
+// função para os valores inseridos no cards
 function getTotal() {
-const totalE = items.filter((item) => item.tipo === "E").map((transaction) => Number(transaction.valor));
-const totalS = items.filter((item) => item.tipo === "S").map((transaction) => Number(transaction.valor));
+const totalE = items.filter((item) => item.tipo === "entrada").map((transaction) => Number(transaction.valor));
+const totalS = items.filter((item) => item.tipo === "saida").map((transaction) => Number(transaction.valor));
 const totalTe = totalE.reduce((acc, cur) => acc + cur, 0).toFixed(2);
 const totalTs = Math.abs(totalS.reduce((acc, cur) => acc + cur, 0)).toFixed(2);
 

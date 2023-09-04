@@ -8,14 +8,14 @@ const saldo = document.querySelector("#card-saldo");
 
 
 // definindo as conts do botão e da tabela
-const btn = document.querySelector("#button");
+const button = document.querySelector("#button");
 const tbody = document.querySelector("tbody");
 
 let items = [];
 let id
 
 // clique do botão onde será salvo os dados
-btn.onclick = () => {
+button.onclick = () => {
     const descricao = document.querySelector("#descricao");
     const valor = document.querySelector("#valor");
     const tipo = document.querySelector('input[name="modalidade"]:checked');
@@ -71,12 +71,13 @@ function editarItem(index) {
     openModal(true, index)
 };
 
+// Função para editar os valores inseridos
 
 function openModal(edit = false, index = 0) {
     const contentdesc = document.querySelectorAll('single-input')
     const descricao = document.querySelector("#descricao");
     const valor = document.querySelector("#valor");
-    const tipo = document.querySelector('input[name="modalidade"]:checked');
+    const tipo = document.querySelector('input[name="modalidade"]').value;
 
 
 
@@ -96,17 +97,20 @@ function openModal(edit = false, index = 0) {
         valor.value = ''
         tipo.value = ''
     }
+    console.log(tipo)
 
 };
 
 // Função para colocar os valores para a moeda brasileira
+
 function formatMoney(value) {
     return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 
 
-//Função para inserir os dados do forms
+//Função para inserir os dados do forms e armazenar na tabela
+
 function insertItem(item, index) {
 
     const descricao = document.querySelector("#descricao");
@@ -124,8 +128,8 @@ function insertItem(item, index) {
             : '<p>Saída</p>'}
             </td>
 <td>
-<button  onclick="editarItem(${index})" id="btn-create"><ion-icon name="create-outline" class="group-icons-create"></ion-icon>
-    <button  onclick="deleteItem(${index})" id="btn-trash"><ion-icon name="trash-outline" class="group-icons-trash"></ion-icon></button>
+<button  onclick="editarItem(${index})" id="create"><ion-icon name="create-outline" class="group-icons-create"></ion-icon>
+    <button  onclick="deleteItem(${index})" id="trash"><ion-icon name="trash-outline" class="group-icons-trash"></ion-icon></button>
 </td>`);
 
     tbody.appendChild(tr)
@@ -151,15 +155,15 @@ function getTotal() {
 
     const totalItems = (totalTe - totalTs).toFixed(2);
 
-    let checkdalert = document.querySelector('#alerta');
+    let alerta = document.querySelector('#alerta');
 
     if (totalItems < 0) {
 
-        checkdalert.innerHTML = ` <img src="icons/alerta.png" alt="" class="group-icons">`;
+        alerta.innerHTML = ` <img src="../icons/alerta.png" alt="" class="group-icons">`;
 
     } else {
 
-        checkdalert.innerHTML = `<img src="icons/saldos.png" alt="" class="group-icons" >`;
+        alerta.innerHTML = `<img src="../icons/saldos.png" alt="" class="group-icons" >`;
     }
 
     if (totalItems < 0) {
@@ -193,10 +197,11 @@ function formatData() {
 
     const data = new Date();
     const dia = zerofill(data.getDate(), 2);
-    const meses = zerofill(data.getMonth() + 1, 2);
+    const mes = zerofill(data.getMonth() + 1, 2);
     const ano = data.getFullYear();
 
-    return `${dia}/${meses}/${ano}`
+    return `${dia}/${mes}/${ano}`
 }
 
+// Novamente está recarregando a PÁG
 loadItens();

@@ -233,12 +233,12 @@ tr:nth-child(even) {
 }
 
 
-#btn-create{
+#create{
   border: none;
   background-color: transparent;
 }
 
-#btn-trash{
+#trash{
   border: none;
   background-color: transparent;
 }

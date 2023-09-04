@@ -37,7 +37,7 @@ button.onclick = () => {
 
     descricao.value = "";
     valor.value = "";
-};
+};   
 
 
 
@@ -72,6 +72,16 @@ function deleteItem(index) {
 
 function editarItem(edit = true, index = 0) {
 
+    let formid = document.getElementById('formid');
+    if (formid.value === index.toString()) {
+        descricao.value = ''
+        valor.value = ''
+        formid.value = ''
+        document.querySelector('#saida').checked = false
+        document.querySelector('#entrada') checked = false
+        
+        return
+    }
     if (edit) {
 
         const descricao = document.querySelector("#descricao");

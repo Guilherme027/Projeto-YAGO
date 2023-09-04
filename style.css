@@ -55,6 +55,11 @@ html {
   box-shadow: 0px 10px 40px #00000056;
 }
 
+.blocks:hover{
+  transform: translateY(-.65rem);
+  transition: .2s;
+}
+
 .text {
   text-align: center;
   font-size: 2.125rem;
@@ -205,11 +210,15 @@ tr:nth-child(even) {
 .group-icons-create:hover {
   color: #57AEFF;
   cursor: pointer;
+  transform: scale(1.5);
+    transition: .2s;
 }
 
 .group-icons-trash:hover {
   cursor: pointer;
   color: red;
+  transform: scale(1.5);
+    transition: .2s;
 }
 
 .group-icons-create {
@@ -220,6 +229,18 @@ tr:nth-child(even) {
 .group-icons-trash {
   width: 1.5rem;
   height: 1.5rem;
+  
+}
+
+
+#btn-create{
+  border: none;
+  background-color: transparent;
+}
+
+#btn-trash{
+  border: none;
+  background-color: transparent;
 }
 
 
@@ -258,3 +279,5 @@ tr:nth-child(even) {
   display: grid;
   color: white;
 }
+
+

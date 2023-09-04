@@ -99,7 +99,10 @@ if (edit) {
 
 };
 
-
+// Função para colocar os valores para a moeda brasileira
+function formatMoney(value) {
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
 
 
 
@@ -114,15 +117,15 @@ let tr = document.createElement("tr");
 
 tr.innerHTML = (`
 <td>${item.descricao}</td>
-<td> ${formatmoney(Number(item.valor))}</td>
-<td>${formtdata()}</td>
-<td class= "icon-up-down">${item.modalidade === "E"
-            ? '<ion-icon id="icon-up" name="caret-up"></ion-icon>'
-            : '<ion-icon id="icon-down" name="caret-down"></ion-icon>'}
+<td> ${formatMoney(Number(item.valor))}</td>
+<td>${formatData()}</td>
+<td>${item.tipo === "entrada"
+            ? '<p>Entrada<p/>'
+            : '<p>Saída</p>'}
             </td>
 <td>
-<button  onclick="editarItem(${index})"><ion-icon name="create-outline"></ion-icon>
-    <button  onclick="deleteItem(${index})"><ion-icon name="trash-outline"></ion-icon></button>
+<button  onclick="editarItem(${index})" id="btn-create"><ion-icon name="create-outline" class="group-icons-create"></ion-icon>
+    <button  onclick="deleteItem(${index})" id="btn-trash"><ion-icon name="trash-outline" class="group-icons-trash"></ion-icon></button>
 </td>`);
 
 tbody.appendChild(tr)
@@ -149,13 +152,14 @@ const totalTs = Math.abs(totalS.reduce((acc, cur) => acc + cur, 0)).toFixed(2);
 const totalItems = (totalTe - totalTs).toFixed(2);
 
 let checkdalert = document.querySelector('#alerta');
+
 if (totalItems < 0) {
 
-    checkdalert.innerHTML = `<img src="icons/alerta.png" alt="" class="group-icons" id="alerta">`;
+    checkdalert.innerHTML = ` <img src="icons/alerta.png" alt="" class="group-icons">`;
 
 } else {
 
-    checkdalert.innerHTML = `<img src="icons/saldos.png" alt="" class="group-icons">`;
+    checkdalert.innerHTML = `<img src="icons/saldos.png" alt="" class="group-icons" >`;
 }
 
 if (totalItems < 0) {
@@ -167,9 +171,9 @@ if (totalItems < 0) {
 
 }
 
-entrada.innerHTML = formatmoney(Number(totalTe));
-saida.innerHTML = formatmoney(Number(totalTs));
-saldo.innerHTML = formatmoney(Number(totalItems));
+document.getElementById("card-entrada").textContent = formatMoney(Number(totalTe));
+  document.getElementById("card-saida").textContent = formatMoney(Number(totalTs));
+  document.getElementById("card-saldo").textContent = formatMoney(Number(totalItems));
 
 };
 
@@ -182,7 +186,10 @@ function zerofill(numero, lagura) {
 return String(numero).padStart(lagura, '0');
 }
 
-function formatdata() {
+
+// Função para colocar a data do formato BR
+
+function formatData() {
 
 const data = new Date();
 const dia = zerofill(data.getDate(), 2);

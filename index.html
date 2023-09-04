@@ -22,20 +22,22 @@
                     Proventos
                     <img src="icons/proventos.png" alt="" class="group-icons">
                 </h3>
-                <p id="card-entrada">R$ 0,00</p>
+                <span id="card-entrada"> 0,00</span>
             </div>
             <div class="blocks">
                 <h3 class="text">Gastos
                     <img src="icons/gastos.png" alt="" class="group-icons">
                 </h3>
-                <p id="card-saida">R$ 0,00</p>
+            <span id="card-saida"> 0,00</span>
             </div>
             <div class="blocks">
                 <h3 class="text">Saldo
-                    <img src="icons/saldos.png" alt="" class="group-icons">
-                    <img src="icons/alerta.png" alt="" class="group-icons" id="alerta">
+                    
+                    
+                       <img src="icons/saldos.png" alt="" class="group-icons">
+                <img src="icons/alerta.png" alt="" id="alerta">
                 </h3>
-                <p id="card-saldo">R$ 0,00</p>
+                <span id="card-saldo"> 0,00</span>
             </div>
         </div>
         <div class="content-form">
@@ -50,9 +52,10 @@
                 </div>
 
                 <div class="group-input-radio">
-                    <input type="radio" name="modalidade" id="entrada" class="radio">
+                    <input type="radio" name="modalidade" id="entrada" class="radio" value="entrada">
                     <label for="entrada">Entrada</label>
-                    <input type="radio" name="modalidade" id="saida" class="radio">
+                    
+                    <input type="radio" name="modalidade" id="saida" class="radio" value="saida">
                     <label for="saida">Saída</label>
                 </div>
                 <input type="hidden" name="id" id="formid">
@@ -69,6 +72,7 @@
                         <th>Valor</th>
                         <th>Lançamento</th>
                         <th>Tipo</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,8 +81,8 @@
                         <td>R$ 200,00</td>
                         <td>Saída</td>
                         <td>
-                            <button><ion-icon name="create" class="group-icons-create"></ion-icon>
-                            <button><ion-icon name="trash" class="group-icons-trash"></ion-icon></button>
+                            <button id="btn-create"><ion-icon name="create" class="group-icons-create"></ion-icon>
+                            <button id="btn-trash"><ion-icon name="trash" class="group-icons-trash"></ion-icon></button>
                             </td>
                     </tr>
                 </tbody>

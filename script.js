@@ -66,38 +66,33 @@ function deleteItem(index) {
 
 // Função para editar os forms
 
-function editarItem(index) {
 
-    openModal(true, index)
-};
 
 // Função para editar os valores inseridos
 
-function openModal(edit = false, index = 0) {
-    const contentdesc = document.querySelectorAll('single-input')
-    const descricao = document.querySelector("#descricao");
-    const valor = document.querySelector("#valor");
-    const tipo = document.querySelector('input[name="modalidade"]').value;
-
-
-
-    contentdesc.onclick = e => {
-        if (e.target.className.indexOf('single-input') !== -1) {
-            contentdesc.classList.remove('active')
-        }
-    }
+function editarItem(edit = true, index = 0) {
 
     if (edit) {
+
+        const descricao = document.querySelector("#descricao");
+        const valor = document.querySelector("#valor");
+        if (items[index].tipo === 'entrada') {
+            document.querySelector('#entrada').checked = true
+
+        } else {
+            document.querySelector('#saida').checked = true
+        }
+
         descricao.value = items[index].descricao
         valor.value = items[index].valor
-        tipo.value = items[index].tipo
         id = index
     } else {
         descricao.value = ''
         valor.value = ''
-        tipo.value = ''
+        document.querySelector('#entrada').checked = false
+        document.querySelector('#saida').checked = false
     }
-    console.log(tipo)
+
 
 };
 
@@ -128,7 +123,7 @@ function insertItem(item, index) {
             : '<p>Saída</p>'}
             </td>
 <td>
-<button  onclick="editarItem(${index})" id="create"><ion-icon name="create-outline" class="group-icons-create"></ion-icon>
+<button  onclick="editarItem(true, ${index})" id="create"><ion-icon name="create-outline" class="group-icons-create"></ion-icon>
     <button  onclick="deleteItem(${index})" id="trash"><ion-icon name="trash-outline" class="group-icons-trash"></ion-icon></button>
 </td>`);
 

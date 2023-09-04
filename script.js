@@ -78,7 +78,7 @@ function editarItem(edit = true, index = 0) {
         valor.value = ''
         formid.value = ''
         document.querySelector('#saida').checked = false
-        document.querySelector('#entrada') checked = false
+        document.querySelector('#entrada').checked = false
         
         return
     }

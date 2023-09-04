@@ -158,12 +158,15 @@ function getTotal() {
     let alerta = document.querySelector('#alerta');
 
     if (totalItems < 0) {
-
-        alerta.innerHTML = ` <img src="../icons/alerta.png" alt="" class="group-icons">`;
-
+        let imagem1 = document.getElementById("imagem1")
+        let imagem2 = document.getElementById('imagem2')
+        imagem1.style.display = "none"
+        imagem2.style.display = "block"
+        document.getElementById('card-saldo').style.color = "red";
     } else {
-
-        alerta.innerHTML = `<img src="../icons/saldos.png" alt="" class="group-icons" >`;
+        document.getElementById('card-saldo').style.color = "black";
+        imagem1.style.display = "block"
+        imagem2.style.display = "none"
     }
 
     if (totalItems < 0) {

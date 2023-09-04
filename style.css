@@ -210,14 +210,14 @@ tr:nth-child(even) {
 .group-icons-create:hover {
   color: #57AEFF;
   cursor: pointer;
-  transform: scale(1.5);
+  transform: scale(1.3);
     transition: .2s;
 }
 
 .group-icons-trash:hover {
   cursor: pointer;
   color: red;
-  transform: scale(1.5);
+  transform: scale(1.3);
     transition: .2s;
 }
 

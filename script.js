@@ -12,10 +12,15 @@ const button = document.querySelector("#button");
 const tbody = document.querySelector("tbody");
 
 let items = [];
-let id
+
 
 // clique do botão onde será salvo os dados
-button.onclick = () => {
+button.onclick = (e) => {
+
+    e.preventDefault()
+
+    let formid = document.getElementById('formid');
+
     const descricao = document.querySelector("#descricao");
     const valor = document.querySelector("#valor");
     const tipo = document.querySelector('input[name="modalidade"]:checked');
@@ -24,19 +29,18 @@ button.onclick = () => {
         return alert("Preencha todos os campos");
     }
 
-    if (id !== undefined) {
-        items[id].descricao = descricao.value;
-        items[id].valor = valor.value;
-        items[id].tipo = tipo.value;
+    if (formid.value !== '') {
+        items[formid.value].descricao = descricao.value;
+        items[formid.value].valor = valor.value;
+        items[formid.value].tipo = tipo.value;
     } else {
         items.unshift({ 'descricao': descricao.value, 'valor': valor.value, 'tipo': tipo.value })
     }
 
+    formLimpo ();
     setItensBD();
     loadItens();
 
-    descricao.value = "";
-    valor.value = "";
 };   
 
 
@@ -68,27 +72,27 @@ function deleteItem(index) {
 
 
 
+
 // Função para editar os valores inseridos
 
 function editarItem(edit = true, index = 0) {
 
     let formid = document.getElementById('formid');
+
     if (formid.value === index.toString()) {
-        descricao.value = ''
-        valor.value = ''
-        formid.value = ''
-        document.querySelector('#saida').checked = false
-        document.querySelector('#entrada').checked = false
-        
-        return
+       formLimpo();
+        return;
     }
+
     if (edit) {
+
+        formid.value = index.toString();
 
         const descricao = document.querySelector("#descricao");
         const valor = document.querySelector("#valor");
+
         if (items[index].tipo === 'entrada') {
             document.querySelector('#entrada').checked = true
-
         } else {
             document.querySelector('#saida').checked = true
         }
@@ -96,15 +100,31 @@ function editarItem(edit = true, index = 0) {
         descricao.value = items[index].descricao
         valor.value = items[index].valor
         id = index
-    } else {
-        descricao.value = ''
-        valor.value = ''
-        document.querySelector('#entrada').checked = false
-        document.querySelector('#saida').checked = false
-    }
 
+        document.getElementById('button').innerHTML = `Editar <ion-icon name="create-outline" id="salvar"></ion-icon>
+        `
+   
 
 };
+
+
+    
+}
+
+function formLimpo(index) {
+    
+    let formid = document.getElementById('formid')
+    let descricao = document.querySelector('#descricao')
+    let valor = document.querySelector('#valor')
+
+    descricao.value = ''
+    valor.value = ''
+    formid.value = ''
+    document.querySelector('#entrada').checked = false
+    document.querySelector('#saida').checked = false
+ document.getElementById('button').innerHTML = `Salvar <ion-icon name="add-circle-outline"
+ id="salvar"></ion-icon>`
+} 
 
 // Função para colocar os valores para a moeda brasileira
 

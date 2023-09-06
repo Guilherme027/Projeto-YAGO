@@ -8,14 +8,25 @@ const saldo = document.querySelector("#card-saldo");
 
 
 // definindo as conts do botão e da tabela
-const button = document.querySelector("#button");
+const btnSave = document.querySelector("#button");
 const tbody = document.querySelector("tbody");
 
 let items = [];
 
 
+function loadItens() {
+    items = getItensBD();
+    tbody.innerHTML = "";
+    items.forEach((item, index) => {
+        insertItem(item, index);
+    });
+
+    getTotal();
+
+};
+
 // clique do botão onde será salvo os dados
-button.onclick = (e) => {
+btnSave.onclick = (e) => {
 
     e.preventDefault()
 
@@ -37,11 +48,11 @@ button.onclick = (e) => {
         items.unshift({ 'descricao': descricao.value, 'valor': valor.value, 'tipo': tipo.value })
     }
 
-    formLimpo ();
+    formLimpo();
     setItensBD();
     loadItens();
 
-};   
+};
 
 
 
@@ -53,7 +64,7 @@ function deleteItem(index) {
 
     let userConfirmation = confirm("Você tem certeza de que deseja deletar este item?");
 
-    // Se o usuário confirmou a exclusão
+    // Se foi conformidado a exclusão
     if (userConfirmation) {
         // Delete o item
         items.splice(index, 1);
@@ -80,7 +91,7 @@ function editarItem(edit = true, index = 0) {
     let formid = document.getElementById('formid');
 
     if (formid.value === index.toString()) {
-       formLimpo();
+        formLimpo();
         return;
     }
 
@@ -103,16 +114,14 @@ function editarItem(edit = true, index = 0) {
 
         document.getElementById('button').innerHTML = `Editar <ion-icon name="create-outline" id="salvar"></ion-icon>
         `
-   
-
-};
 
 
-    
+    };
+
 }
 
 function formLimpo(index) {
-    
+
     let formid = document.getElementById('formid')
     let descricao = document.querySelector('#descricao')
     let valor = document.querySelector('#valor')
@@ -122,9 +131,9 @@ function formLimpo(index) {
     formid.value = ''
     document.querySelector('#entrada').checked = false
     document.querySelector('#saida').checked = false
- document.getElementById('button').innerHTML = `Salvar <ion-icon name="add-circle-outline"
+    document.getElementById('button').innerHTML = `Salvar <ion-icon name="add-circle-outline"
  id="salvar"></ion-icon>`
-} 
+}
 
 // Função para colocar os valores para a moeda brasileira
 
@@ -161,16 +170,7 @@ function insertItem(item, index) {
 
 };
 
-function loadItens() {
-    items = getItensBD();
-    tbody.innerHTML = "";
-    items.forEach((item, index) => {
-        insertItem(item, index);
-    });
 
-    getTotal();
-
-};
 // função para os valores inseridos no cards
 function getTotal() {
     const totalE = items.filter((item) => item.tipo === "entrada").map((transaction) => Number(transaction.valor));
@@ -194,14 +194,6 @@ function getTotal() {
         imagem2.style.display = "none"
     }
 
-    if (totalItems < 0) {
-        document.getElementById('card-saldo').style.color = "red";
-
-
-    } else {
-        document.getElementById('card-saldo').style.color = "black";
-
-    }
 
     document.getElementById("card-entrada").textContent = formatMoney(Number(totalTe));
     document.getElementById("card-saida").textContent = formatMoney(Number(totalTs));
